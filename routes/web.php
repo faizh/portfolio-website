@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandingPage;
 use App\Http\Controllers\HeaderPage;
+use App\Http\Controllers\HeroPage;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +18,4 @@ use App\Http\Controllers\HeaderPage;
 
 Route::get('/', [LandingPage::class, 'index']);
 
-Route::get('/getNavMenu', [HeaderPage::class, 'navMenu']);
+Route::get('/getAttributes', [HeroPage::class, 'getWelcomeText']);

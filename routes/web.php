@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandingPage;
+use App\Http\Controllers\HeaderPage;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +16,5 @@ use App\Http\Controllers\LandingPage;
 */
 
 Route::get('/', [LandingPage::class, 'index']);
+
+Route::get('/getNavMenu', [HeaderPage::class, 'navMenu']);

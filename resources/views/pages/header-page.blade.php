@@ -11,21 +11,13 @@
                     <span class="hamburger-line transition duration-300 ease-in-out"></span>
                     <span class="hamburger-line transition duration-300 ease-in-out origin-bottom-left"></span>
                 </button>
-
                 <nav id="nav-menu" class="hidden absolute py-5 shadow-lg rounded-lg max-w-[170px] w-full right-4 top-full lg:block lg:max-w-full lg:static lg:shadow-none lg:rounded-none">
                     <ul class="block lg:flex">
-                        <li class="group">
-                            <a href="#home" class="text-sm text-dark py-2 mx-8 flex group-hover:text-primary dark:text-white">Home</a>
-                        </li>
-                        <li class="group">
-                            <a href="#about" class="text-sm text-dark py-2 mx-8 flex group-hover:text-primary dark:text-white">About</a>
-                        </li>
-                        <li class="group">
-                            <a href="#portfolios" class="text-sm text-dark py-2 mx-8 flex group-hover:text-primary dark:text-white">Projects</a>
-                        </li>
-                        <li class="group">
-                            <a href="#resume" class="text-sm text-dark py-2 mx-8 flex group-hover:text-primary dark:text-white">Resume</a>
-                        </li>
+                        @foreach ($nav_menus as $menu)
+                            <li class="group">
+                                <a href="{{ $menu-> href }}" class="text-sm text-dark py-2 mx-8 flex group-hover:text-primary dark:text-white">{{ $menu->display_name }}</a>
+                            </li>
+                        @endforeach
                     </ul>
                 </nav>
 

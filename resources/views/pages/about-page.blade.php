@@ -13,11 +13,12 @@
                 <div class="flex items-center mb-10">
 
                     @foreach ($socmed_data as $socmed)
+                    <?php $socmed = (object) $socmed ?>
                         <a href="{{ $socmed->socmed_src }}" target="_blank" class="w-9 h-9 mr-3 rounded-full flex justify-center items-center border border-slate-300 hover:border-primary hover:bg-primary hover:text-white duration-200 ease-in-out">
                             <svg role="img" class="fill-current dark:text-white" width="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>{{ $socmed->socmed_name }}</title><path d="{{ $socmed->svg }}"/></svg>
                         </a>
                     @endforeach
-                    
+
                 </div>
             </div>
         </div>

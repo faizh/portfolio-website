@@ -36,7 +36,8 @@ class LandingPage extends Controller
         $socmedSrc      = AboutPage::getAttributesResult('socmed_src');
         $svgs           = AboutPage::getAttributesResult('svg_src');
         $arrIndex       = array('socmed_name', 'socmed_src', 'svg');
-        $socmedData     = $this->mergeArrays($socmedName, $socmedSrc, $svgs, $arrIndex);
+        $arrData        = array($socmedName, $socmedSrc, $svgs);
+        $socmedData     = $this->mergeArrays($arrData, $arrIndex);
 
         // portfolio page
         $titlePortfolio     = PortfolioPage::getAttributesRow('title');
@@ -45,7 +46,8 @@ class LandingPage extends Controller
         $portfolioDescs     = PortfolioPage::getAttributesResult('portfolio_desc');
         $portfolioSrcs      = PortfolioPage::getAttributesResult('portfolio_src');
         $arrIndex           = array('portfolio_name', 'portfolio_desc', 'portfolio_src');
-        $portfolioData      = $this->mergeArrays($portfolioNames, $portfolioDescs, $portfolioSrcs, $arrIndex);
+        $arrData            = array($portfolioNames, $portfolioDescs, $portfolioSrcs);
+        $portfolioData      = $this->mergeArrays($arrData, $arrIndex);
 
         // resume page
         $titleResume1     = ResumePage::getAttributesRow('title_1');
@@ -57,7 +59,8 @@ class LandingPage extends Controller
         $status1        = ResumePage::getAttributesResult('status_1');
         $descStatus1    = ResumePage::getAttributesResult('desc_status_1');
         $arrIndex       = array('year', 'status_name', 'desc_status');
-        $resumeData1    = $this->mergeArrays($year1, $status1, $descStatus1, $arrIndex);
+        $arrData        = array($year1, $status1, $descStatus1);
+        $resumeData1    = $this->mergeArrays($arrData, $arrIndex);
         
         $year2          = ResumePage::getAttributesResult('year_2');
         $status2        = ResumePage::getAttributesResult('status_2');
@@ -65,7 +68,7 @@ class LandingPage extends Controller
         $descStatus2    = ResumePage::getAttributesResult('desc_status_2');
         $arrIndex       = array('year', 'status_name', 'sec_status_name', 'desc_status');
         $arrData        = array($year2, $status2, $secStatus2, $descStatus2);
-        $resumeData2    = $this->mergeArrays2($arrData, $arrIndex);
+        $resumeData2    = $this->mergeArrays($arrData, $arrIndex);
 
         // footer page
         $copyrightText  = FooterPage::getAttributesRow('copyright_text');
@@ -101,30 +104,7 @@ class LandingPage extends Controller
         return view('landing-page', $data);
     }
 
-    public function mergeArrays($arr1=array(), $arr2=array(), $arr3=array(), $arrIndex=array())
-    {
-        $arr1_length    = count($arr2);
-        $arr2_length    = count($arr3);
-
-        $max_length     = $arr1_length;
-
-        if ($arr1_length < $arr2_length) {
-            $max_length = $arr2_length;
-        }
-
-        $arr_result = array();
-        for ($i=0; $i < $max_length; $i++) { 
-            $arr_result[] = (object) array(
-                $arrIndex[0]    => $arr1[$i]->attribute_value,
-                $arrIndex[1]    => $arr2[$i]->attribute_value,
-                $arrIndex[2]    => $arr3[$i]->attribute_value
-            );
-        }
-
-        return (object) $arr_result;
-    }
-
-    public function mergeArrays2($arr=array(), $arrIndex=array())
+    public function mergeArrays($arr=array(), $arrIndex=array())
     {
         $max_length = 0;
         foreach ($arr as $key ) {
@@ -133,8 +113,6 @@ class LandingPage extends Controller
             }
         }
 
-        $test = array();
-        $temp_text = "";
         for ($j=0; $j < $max_length; $j++) { 
             for ($i=0; $i < count($arr); $i++) { 
                 $temp_result[] =  array(
@@ -148,9 +126,9 @@ class LandingPage extends Controller
                 }
 
                 if (($i + 1) % count($arrIndex) == 0) {
-                    $arrResult[] =  $arr_result;
-                    $temp_result = array();
-                    $arr_result = array();
+                    $arrResult[]    = $arr_result;
+                    $temp_result    = array();
+                    $arr_result     = array();
                 }
             }
         }

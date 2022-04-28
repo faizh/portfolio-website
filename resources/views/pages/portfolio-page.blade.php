@@ -10,6 +10,7 @@
         <div class="w-full px-4 flex flex-wrap justify-center xl:w-10/12 xl:mx-auto">
 
             @foreach ($portfolio_data as $portfolio)
+            <?php $portfolio = (object) $portfolio ?>
                 <div class="mb-12 p-4 md:w-1/2">
                     <div class="rounded-md shadow-md overflow-hidden">
                         <img src="{{ asset( $portfolio->portfolio_src ) }}" alt="{{ $portfolio->portfolio_name }}" width="full">

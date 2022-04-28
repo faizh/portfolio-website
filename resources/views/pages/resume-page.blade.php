@@ -12,6 +12,7 @@
                         </div>
 
                         @foreach ($resume_data_1 as $resume_1)
+                        <?php $resume_1 = (object) $resume_1 ?>
                             <div class="flex flex-wrap mt-10 relative items-center">
                                 <div class="rounded-full bg-slate-600 w-[80px] h-[80px] flex justify-center items-center absolute">
                                     <h3 class="font-semibold text-white">{{ $resume_1->year }}</h3>
@@ -51,7 +52,7 @@
                     
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>

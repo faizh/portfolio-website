@@ -8,6 +8,7 @@ use App\Http\Controllers\HeroPage;
 use App\Http\Controllers\AboutPage;
 use App\Http\Controllers\PortfolioPage;
 use App\Http\Controllers\ResumePage;
+use App\Http\Controllers\FooterPage;
 
 class LandingPage extends Controller
 {
@@ -66,6 +67,9 @@ class LandingPage extends Controller
         $arrData        = array($year2, $status2, $secStatus2, $descStatus2);
         $resumeData2    = $this->mergeArrays2($arrData, $arrIndex);
 
+        // footer page
+        $copyrightText  = FooterPage::getAttributesRow('copyright_text');
+
 
         $data    = array(
             'nav_menus'         => $navMenus,
@@ -90,7 +94,8 @@ class LandingPage extends Controller
             'resume_title_2'    => $titleResume2,
             'resume_desc_2'     => $descResume2,
             'resume_data_1'     => $resumeData1,
-            'resume_data_2'     => $resumeData2
+            'resume_data_2'     => $resumeData2,
+            'copyright_text'    => $copyrightText
         );
 
         return view('landing-page', $data);

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\HeaderPage;
 use App\Http\Controllers\HeroPage;
 use App\Http\Controllers\AboutPage;
+use App\Http\Controllers\PortfolioPage;
 
 class LandingPage extends Controller
 {
@@ -32,7 +33,17 @@ class LandingPage extends Controller
         $socmedName     = AboutPage::getAttributesResult('socmed_name');
         $socmedSrc      = AboutPage::getAttributesResult('socmed_src');
         $svgs           = AboutPage::getAttributesResult('svg_src');
-        $socmedData     = $this->mergeArrays($socmedName, $socmedSrc, $svgs);
+        $arrIndex       = array('socmed_name', 'socmed_src', 'svg');
+        $socmedData     = $this->mergeArrays($socmedName, $socmedSrc, $svgs, $arrIndex);
+
+        // portfolio page
+        $titlePortfolio     = PortfolioPage::getAttributesRow('title');
+        $descPortfolio      = PortfolioPage::getAttributesRow('desc');
+        $portfolioNames     = PortfolioPage::getAttributesResult('portfolio_name');
+        $portfolioDescs     = PortfolioPage::getAttributesResult('portfolio_desc');
+        $portfolioSrcs      = PortfolioPage::getAttributesResult('portfolio_src');
+        $arrIndex           = array('portfolio_name', 'portfolio_desc', 'portfolio_src');
+        $portfolioData      = $this->mergeArrays($portfolioNames, $portfolioDescs, $portfolioSrcs, $arrIndex);
 
         $data    = array(
             'nav_menus'         => $navMenus,
@@ -48,16 +59,19 @@ class LandingPage extends Controller
             'desc_1'            => $desc1,
             'header_2'          => $header2,
             'desc_2'            => $desc2,
-            'socmed_data'       => $socmedData
+            'socmed_data'       => $socmedData,
+            'portfolio_title'   => $titlePortfolio,
+            'portfolio_desc'    => $descPortfolio,
+            'portfolio_data'    => $portfolioData
         );
 
         return view('landing-page', $data);
     }
 
-    public function mergeArrays($socmed_name=array(), $socmed=array(), $svg=array())
+    public function mergeArrays($arr1=array(), $arr2=array(), $arr3=array(), $arrIndex=array())
     {
-        $arr1_length    = count($socmed);
-        $arr2_length    = count($svg);
+        $arr1_length    = count($arr2);
+        $arr2_length    = count($arr3);
 
         $max_length     = $arr1_length;
 
@@ -68,9 +82,9 @@ class LandingPage extends Controller
         $arr_result = array();
         for ($i=0; $i < $max_length; $i++) { 
             $arr_result[] = (object) array(
-                "socmed_name"   => $socmed_name[$i]->attribute_value,
-                "socmed_src"    => $socmed[$i]->attribute_value,
-                "svg"           => $svg[$i]->attribute_value
+                $arrIndex[0]    => $arr1[$i]->attribute_value,
+                $arrIndex[1]    => $arr2[$i]->attribute_value,
+                $arrIndex[2]    => $arr3[$i]->attribute_value
             );
         }
 

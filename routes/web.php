@@ -21,3 +21,8 @@ Route::get('/', [LandingPage::class, 'index']);
 Route::get('/getNavMenu', [HeaderPage::class, 'navMenu']);
 
 Route::get('/admin', [Administrator::class , 'index']);
+Route::get('/admin/menu/navigation', [Administrator::class , 'navigation']);
+Route::get('/admin/menu/hero', [Administrator::class , 'hero']);
+Route::get('/admin/menu/about', [Administrator::class , 'about']);
+Route::get('/admin/menu/portfolio', [Administrator::class , 'portfolio']);
+Route::get('/admin/menu/resume', [Administrator::class , 'resume']);

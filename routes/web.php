@@ -7,6 +7,7 @@ use App\Http\Controllers\Administrator;
 use App\Http\Controllers\HeroController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\ResumeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,7 +55,15 @@ Route::post('/admin/menu/portfolio/create', [PortfolioController::class, 'store'
 Route::get('/admin/menu/portfolio/delete/{id}', [PortfolioController::class, 'destroy'])->name('admin.portfolio.delete');
 /* Admin "Portfolio" Routing */
 
+/* Admin "Resume" Routing */
+Route::get('/admin/menu/resume', [ResumeController::class, 'index'])->name('admin.resume.all');
+Route::get('/admin/menu/resume/edit/{attrId}', [ResumeController::class, 'show'])->name('admin.resume.show');
+Route::post('/admin/menu/resume/update/{attrId}', [ResumeController::class, 'update'])->name('admin.resume.update');
+Route::post('/admin/menu/resume/create', [ResumeController::class, 'store'])->name('admin.resume.create');
+Route::get('/admin/menu/resume/delete/{id}', [ResumeController::class, 'destroy'])->name('admin.resume.delete');
+/* Admin "Resume" Routing */
+
 // Route::get('/admin/menu/hero', [Administrator::class , 'hero']);
 // Route::get('/admin/menu/about', [Administrator::class , 'about']);
 // Route::get('/admin/menu/portfolio', [Administrator::class , 'portfolio']);
-Route::get('/admin/menu/resume', [Administrator::class , 'resume']);
+// Route::get('/admin/menu/resume', [Administrator::class , 'resume']);

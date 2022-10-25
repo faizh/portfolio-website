@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandingPage;
 use App\Http\Controllers\HeaderPage;
 use App\Http\Controllers\Administrator;
+use App\Http\Controllers\HeroController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,14 @@ Route::post('/admin/menu/navigation', [Administrator::class , 'createNavigation'
 Route::post('/admin/menu/navigation/edit', [Administrator::class , 'editNavigation']);
 Route::post('/admin/menu/navigation/details', [Administrator::class , 'getNavDetails'])->name('navigationDetails.post');
 Route::get('/admin/menu/navigation/delete/{id}', [Administrator::class , 'deleteNavigation'])->name('navigation.delete');
-Route::get('/admin/menu/hero', [Administrator::class , 'hero']);
+
+Route::get('/admin/menu/hero', [HeroController::class, 'index'])->name('admin.hero.all');
+Route::get('/admin/menu/hero/edit/{attrId}', [HeroController::class, 'show'])->name('admin.hero.show');
+Route::post('/admin/menu/hero/update/{attrId}', [HeroController::class, 'update'])->name('admin.hero.update');
+Route::post('/admin/menu/hero/create', [HeroController::class, 'store'])->name('admin.hero.create');
+Route::get('/admin/menu/hero/delete/{id}', [HeroController::class, 'destroy'])->name('admin.hero.delete');
+
+// Route::get('/admin/menu/hero', [Administrator::class , 'hero']);
 Route::get('/admin/menu/about', [Administrator::class , 'about']);
 Route::get('/admin/menu/portfolio', [Administrator::class , 'portfolio']);
 Route::get('/admin/menu/resume', [Administrator::class , 'resume']);

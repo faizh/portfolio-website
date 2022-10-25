@@ -57,6 +57,12 @@
 <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+@if (session('status'))
+  <?= session('status') ?>
+@endif
+
 <script>
   $(function () {
     $('#example2').DataTable({

@@ -24,7 +24,7 @@ class HeroPage extends Controller
             "motto"             => $motto,
             "resume_text"       => $resumeText,
             "resume_src"        => $resumeSrc,
-            "photo_src"         => $photoSrc
+            "photo_src"         => $photoSrc,
         );
     }
 }

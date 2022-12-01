@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <p class="text-sm text-secondary mb-10 lg:text-base dark:text-secondary_dark">{{ $hero_attr['motto'] }}</p>
-                <a href="#" class="text-sm font-semibold text-white bg-primary px-5 py-3 rounded-full hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out">{{ $hero_attr['resume_text'] }}</a>
+                <a href="{{ asset($hero_attr['resume_src']) }}" target="_blank" class="text-sm font-semibold text-white bg-primary px-5 py-3 rounded-full hover:shadow-lg hover:opacity-80 transition duration-300 ease-in-out">{{ $hero_attr['resume_text'] }}</a>
             </div>
 
             <div class="w-full self-end px-4 lg:w-1/2">

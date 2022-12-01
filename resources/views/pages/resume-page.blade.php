@@ -47,17 +47,6 @@
                                 </div>
                             </div>
                         @endfor
-    
-                        <div class="flex flex-wrap mt-10 relative items-center">
-                            <div class="rounded-full bg-slate-600 w-[80px] h-[80px] flex justify-center items-center absolute">
-                                <h3 class="font-semibold text-white">2016</h3>
-                            </div>
-                            <div class="ml-28">
-                                <h2 class="font-semibold text-base text-dark dark:text-white">Vocational High School Telkom Purwokerto</h2>
-                                <span class="text-xs text-secondary dark:text-secondary_dark">Software Engineering</span>
-                            <p class="text-sm text-secondary dark:text-secondary_dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, excepturi.</p>
-                            </div>
-                        </div>
                     </div>
 
                 </div>

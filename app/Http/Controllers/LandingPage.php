@@ -13,11 +13,20 @@ class LandingPage extends Controller
 {
     public function index()
     {   
-        $navMenus       = HeaderPage::navMenus();
-        $heroAttr       = HeroPage::heroAttr();
-        $aboutAttr      = AboutPage::aboutAttr();
-        $portfolioAttr  = PortfolioPage::portfolioAttr();
-        $resumeAttr     = ResumePage::resumeAttr();
+        $navMenus       = new HeaderPage();
+        $navMenus       = $navMenus->navMenus();
+
+        $heroAttr       = new HeroPage();
+        $heroAttr       = $heroAttr->heroAttr();
+
+        $aboutAttr      = new AboutPage();
+        $aboutAttr      = $aboutAttr->aboutAttr();
+
+        $portfolioAttr  = new PortfolioPage();
+        $portfolioAttr  = $portfolioAttr->portfolioAttr();
+
+        $resumeAttr     = new ResumePage();
+        $resumeAttr     = $resumeAttr->resumeAttr();
 
         $data    = array(
             'nav_menus'         => $navMenus,

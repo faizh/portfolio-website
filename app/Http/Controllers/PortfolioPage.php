@@ -14,13 +14,15 @@ class PortfolioPage extends Controller
         $portfolio_name = DB::table('t_portfolio_attributes')->where('attribute_name', 'portfolio_name')->get();
         $portfolio_desc = DB::table('t_portfolio_attributes')->where('attribute_name', 'portfolio_desc')->get();
         $portfolio_src  = DB::table('t_portfolio_attributes')->where('attribute_name', 'portfolio_src')->get();
+        $portfolio_link = DB::table('t_portfolio_attributes')->where('attribute_name', 'portfolio_link')->get();
         
         return (object) array(
             'title'             => $title,
             'desc'              => $desc,
-            'portfolio_name'     => $portfolio_name,
+            'portfolio_name'    => $portfolio_name,
             'portfolio_desc'    => $portfolio_desc,
-            'portfolio_src'     => $portfolio_src
+            'portfolio_src'     => $portfolio_src,
+            'portfolio_link'    => $portfolio_link,            
         );
 
     }
